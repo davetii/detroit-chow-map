@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>detroit-chow-map test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../detroit-chow-map.html">
+  </head>
+  <body>
+
+    <test-fixture id="BasicTestFixture">
+      <template>
+        <detroit-chow-map></detroit-chow-map>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="ChangedPropertyTestFixture">
+      <template>
+        <detroit-chow-map prop1="new-prop1"></detroit-chow-map>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('detroit-chow-map', () => {
+
+        test('test something, anything.. ', () => {
+
+        });
+
+      });
+    </script>
+
+  </body>
+</html>
