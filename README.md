@@ -1,6 +1,5 @@
 # \<detroit-chow-map\>
-
-
+Google Maps Web Component exercise
 
 ## Install the Polymer-CLI
 
