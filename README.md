@@ -1,6 +1,17 @@
 # \<detroit-chow-map\>
 Google Maps Web Component exercise
 
+## Todo
+* Wire up selected infowindow with target section of page
+* Show more details in the Target section
+* Add Yelp API lookups to Target Section
+* Improve layout
+* Refactor Data to REST call
+* create a list of all stores "fly in"
+    * Clicking on a store from the flyin should center the map on the icon and show its infowindow
+
+
+
 ## Install the Polymer-CLI
 
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
