@@ -1,0 +1,102 @@
+
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../app-layout/app-layout.html">
+
+
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../app-layout/app-header/app-header.html">
+<link rel="import" href="../app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../app-layout/demo/sample-content.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../iron-list/iron-list.html">
+<link rel="import" href="detroit-chow-list-item.html">
+
+
+
+<dom-module id="detroit-chow-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      app-header {
+        background-color: #00897B;
+        color: #fff;
+      }
+
+      paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+      app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      }
+
+      detroit-chow-list-item {
+        background-color: #ffffff;
+      }
+
+    </style>
+      <div style="background-color: #ffffff; width:300px; border:1px solid #ff0000; padding-left: 10px;">
+        <app-drawer-layout>
+          <app-header-layout>
+            <app-header condenses reveals effects="waterfall" slot="header">
+              <app-toolbar>
+                <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+                <div main-title>Detroit Restaurants</div>
+              </app-toolbar>
+            </app-header>
+            <iron-list items="[[data]]" as="item" scroll-target="document">
+              <template>
+                <detroit-chow-list-item
+                        title="[[item.name]]"
+                        address="[[item.address]]"
+                        city="[[item.city]]"
+                        region=""
+                        phone="[[item.phone]]">
+                </detroit-chow-list-item>
+              </template>
+            </iron-list>
+          </app-header-layout>
+        </app-drawer-layout>
+
+      </div>
+  </template>
+
+  <script>
+    /**
+     * `detroit-chow-list`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class DetroitChowList extends Polymer.Element {
+        static get is() {
+            return 'detroit-chow-list';
+        }
+
+        static get properties() {
+            return {
+                data: {
+                    type: Array,
+                    value: []
+                }
+            };
+        }
+
+        ready() {
+            super.ready();
+        }
+
+
+    }
+    window.customElements.define(DetroitChowList.is, DetroitChowList);
+  </script>
+</dom-module>

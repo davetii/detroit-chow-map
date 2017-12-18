@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>detroit-chow-map demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../data.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../detroit-chow-list.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+
+  </head>
+  <style>
+    html { height: 100% }
+    detroit-chow-list {
+      height: 400px;
+    }
+
+  </style>
+  <body>
+    <div class="vertical-section-container centered">
+      <detroit-chow-list id="dc"></detroit-chow-list>
+    </div>
+    <script>
+      document.querySelector("#dc").data = data;
+    </script>
+  </body>
+</html>

@@ -9,11 +9,13 @@ Google Maps Web Component exercise
 * Refactor Data to REST call
 * create a list of all stores "fly in"
     * Clicking on a store from the flyin should center the map on the icon and show its infowindow
+* And of course... more tests
 
 
+## get Yourself a Google API Key for Google Maps
+https://developers.google.com/maps/documentation/javascript/get-api-key
 
 ## Install the Polymer-CLI
-
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
 
 ## Viewing Your Element

@@ -2,20 +2,35 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../google-map/google-map.html">
 <link rel="import" href="../google-map/google-map-marker.html">
+<link rel="import" href="detroit-chow-list.html">
 
 <dom-module id="detroit-chow-map">
   <template>
     <style>
       :host {
         display: block;
+        height: 100%;
+        width: 100%;
       }
 
       google-map {
+        height: 100%;
+        width: 100%;
         min-height: 600px;
         min-width: 800px;
       }
+
+      detroit-chow-list {
+        width:20%;
+        height: 100%;
+        position: absolute;
+        z-index: 3;
+        top: 30px;
+        left:20px;
+      }
     </style>
     <google-map id="map" latitude="42.3314" longitude="-83.0458" api-key="AIzaSyC1CDBNg7s1GsX1LDt_hXQ9kEdiR4k96nU"></google-map>
+    <!-- <detroit-chow-list id="list"></detroit-chow-list> -->
   </template>
 
   <script>
@@ -35,11 +50,12 @@
     ready() {
           super.ready();
           this.$.map.addEventListener('google-map-ready', this.loadMap());
-
+          this.addEventListener('load-item', this._loadItem);
       }
 
       loadMap() {
           var map = this.$.map;
+          var list = this.$.list;
           map.clickEvents = true;
 
           map.addEventListener('map-marker-select', function(event) {
@@ -47,6 +63,14 @@
                   if(e.open && e.title != event.detail.name) {
                       e.open=false;
                   }
+
+                  /*
+                  if(e.title === event.detail.name) {
+                      this.fire('load-item', {data: e});
+                  }
+                  */
+
+
               })
           });
 
@@ -58,7 +82,7 @@
               map.appendChild(this.createMarker(e));
           }, this);
 
-
+          list.data= data;
       }
 
       createMarker(e) {
@@ -75,11 +99,11 @@
       }
 
       createInnerHTML(e) {
-          return this.buildTitle(e) + this.buildLabels(e) + this.buildAddress(e);
+          return this.buildTitle(e) + this.buildLabels(e) + this.buildAddress(e) + this.buildOptions(e) + this.buildButtons(e);
       }
 
       buildTitle(e) {
-          return '<div style="font-family: Roboto, Noto, sans-serif; font-weight: bold;">' + e.name + '</div>';
+          return '<div style="font-family: Roboto, Noto, sans-serif; font-weight: bold; padding-bottom: 10px">' + e.name + '</div>';
       }
 
       buildLabels(e) {
@@ -88,7 +112,7 @@
 
       buildAddress(e) {
          return '<div style="font-family: Roboto, Noto, sans-serif; font-size: small">' + e.address + ' ' +
-         e.city + ' ' + this.formatPhone(e.phone) +  '</div>';
+         e.city + '<br>' + this.formatPhone(e.phone) +  '</div>';
       }
 
       formatPhone(s) {
@@ -96,6 +120,25 @@
         var s2 = (""+s).replace(/\D/g, '');
         var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
         return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+      }
+
+      buildButtons(e) {
+          var s = '<div><paper-icon-button style="width: 30px; height: 30px" icon="star"></paper-icon-button>';
+          s += '<paper-icon-button style="width: 30px; height: 30px" icon="star"></paper-icon-button>';
+          s += '<paper-icon-button style="width: 30px; height: 30px" icon="star"></paper-icon-button>';
+          s += '<paper-icon-button style="width: 30px; height: 30px" icon="star"></paper-icon-button>';
+          s += '<paper-icon-button style="width: 30px; height: 30px" icon="star"></paper-icon-button></div>';
+          return s;
+      }
+
+      buildOptions(e) {
+        var s = '<paper-icon-button icon="maps:directions"></paper-icon-button>';
+        s += '<paper-icon-button icon="editor:insert-comment"></paper-icon-button>';
+        return s;
+      }
+
+      _loadItem(event) {
+
       }
 
     }

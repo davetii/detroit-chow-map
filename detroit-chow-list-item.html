@@ -1,0 +1,102 @@
+<script src="data.js" type="text/javascript" charset="utf-8"></script>
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/maps-icons.html">
+<link rel="import" href="../iron-icons/hardware-icons.html">
+<link rel="import" href="../iron-icons/editor-icons.html">
+<link rel="import" href="../iron-icons/communication-icons.html">
+
+<dom-module id="detroit-chow-list-item">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .card-details { color: var(--paper-grey-600); margin: 2px 0; }
+      paper-icon-button.nonrate-icon {
+        --iron-icon-fill-color: white;
+        --iron-icon-stroke-color: var(--paper-grey-600);
+        width: 30px;
+        height: 30px;
+      }
+
+      paper-icon-button.rate-icon {
+        --iron-icon-fill-color: gold;
+        --iron-icon-stroke-color: var(--paper-grey-600);
+        width: 30px;
+        height: 30px;
+      }
+
+    </style>
+    <paper-item>
+
+      <paper-item-body two-line>
+        <div><h3>[[title]]</h3></div>
+        <div secondary>[[address]]<br>[[city]]<br>[[phone]]</div>
+      </paper-item-body>
+      <div class="card-actions">
+        <paper-icon-button icon="communication:phone"></paper-icon-button>
+        <paper-icon-button icon="maps:directions"></paper-icon-button>
+        <paper-icon-button icon="editor:insert-comment"></paper-icon-button>
+        <paper-icon-button icon="hardware:laptop-chromebook"></paper-icon-button>
+      </div>
+      <div class="card-actions">
+        <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+        <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+        <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+        <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+        <paper-icon-button class="nonrate-icon" icon="star"></paper-icon-button>
+      </div>
+    </paper-item>
+  </template>
+
+  <script>
+    /**
+     * `detroit-chow-list-item`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/detroit-chow-list-item.html
+     */
+    class DetroitChowListItem extends Polymer.Element {
+        static get is() {
+            return 'detroit-chow-list-item';
+        }
+
+        static get properties() {
+            return {
+                title: {
+                    type: String,
+                    value: ''
+                },
+                address: {
+                    type: String,
+                    value: ''
+                },
+                city: {
+                    type: String,
+                    value: ''
+                },
+                phone: {
+                    type: String,
+                    value: ''
+                },
+                web: {
+                    type: String,
+                    value: ''
+                }
+            };
+        }
+
+        ready() {
+            super.ready();
+            console.log('detroit chow list item is ready')
+        }
+    }
+    window.customElements.define(DetroitChowListItem.is, DetroitChowListItem);
+  </script>
+</dom-module>
