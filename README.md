@@ -2,13 +2,11 @@
 Google Maps Web Component exercise
 
 ## Todo
-* Wire up selected infowindow with target section of page
-* Show more details in the Target section
-* Add Yelp API lookups to Target Section
-* Improve layout
+* Implement Google Maps Directions UI
+* Implement Google Maps Directions Service
+* Create API review Screen
+* Implement Yelp, Google API's
 * Refactor Data to REST call
-* create a list of all stores "fly in"
-    * Clicking on a store from the flyin should center the map on the icon and show its infowindow
 * And of course... more tests
 
 
